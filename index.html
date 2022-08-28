@@ -16,8 +16,8 @@
       }
     </style>
   </head>
-  <body>
-    <div class="overflow-x-auto relative shadow-md bg-gray-700">
+  <body class="bg-gray-700">
+    <div class="overflow-x-auto relative shadow-md">
       <table
         class="w-4/5 text-sm text-left text-slate-500 mx-auto rounded-md dark:text-slate-400"
       >
@@ -48,6 +48,33 @@
         </thead>
         <tbody id="tbody"></tbody>
       </table>
+    </div>
+
+    <div
+      id="warning"
+      class="text-7xl text-red-500 text-center my-32 w-3/4 mx-auto"
+    >
+      ⏱️<br />Wait Data is coming Bro<br />👦
+    </div>
+    <div class="flex flex-col items-center my-5">
+      <!-- Help text -->
+      <span id="current-page" class="text-sm text-gray-700 dark:text-gray-400">
+      </span>
+      <!-- Buttons -->
+      <div class="inline-flex mt-2 xs:mt-0">
+        <button
+          id="prev-page"
+          class="py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        >
+          Prev
+        </button>
+        <button
+          id="next-page"
+          class="py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-r border-0 border-l border-gray-700 hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        >
+          Next
+        </button>
+      </div>
     </div>
 
     <!-- ----------------------------- script ----------------------------- -->
