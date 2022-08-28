@@ -24,9 +24,10 @@ function paginate(pageNo, url = "all") {
         <span class="font-semibold text-gray-900 dark:text-white">${
           10 * (pageNo - 1) + 1
         }</span> to
-        <span class="font-semibold text-gray-900 dark:text-white">${
-          10 * pageNo
-        }</span> of
+        <span class="font-semibold text-gray-900 dark:text-white">${Math.min(
+          10 * pageNo,
+          len
+        )}</span> of
         <span class="font-semibold text-gray-900 dark:text-white">${len}</span>
         Entries
   `;
