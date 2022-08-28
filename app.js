@@ -33,6 +33,7 @@ const setCountry = (country) => {
     // console.log(e);
   }
   const tr = document.createElement("tr");
+  tr.setAttribute("data-modal-toggle", "large-modal");
   tr.className =
     "bg-white hover:bg-slate-100 border-b dark:bg-slate-800 dark:border-slate-700 hover:dark:bg-slate-900 group";
   tr.innerHTML = `
@@ -52,11 +53,41 @@ const setCountry = (country) => {
     currency && "- " + currency.symbol
   }</span></td>
             <td class="py-4 px-6 text-right">
-              <a
-                href="#"
-                class="font-medium text-sky-600 dark:text-sky-500 hover:underline"
-                >More</a
-              >
+              <label for=${
+                country.cca3
+              } class="text-sky-500 hover:text-sky-300 cursor-pointer hover:underline">more</label>
+              <input type="checkbox" id=${country.cca3} class="modal-toggle" />
+              <label for=${country.cca3} class="modal cursor-pointer ">
+                <label class="modal-box w-11/12 text-lg min-h-[400px] p-20 max-w-5xl space-y-5 text-left relative" for="">
+                  <div class='flex gap-10  items-center'> 
+                    <div> 
+                      <h3 class="text-3xl font-bold">${country.name.common}</h3>
+                      <h3 class='text-lg font-semibold'>${
+                        country.name.official
+                      }</h3>
+                      </div>
+                    <img class='w-20' src=${country.coatOfArms.svg}/>
+                   
+                  </div>
+                  <div class='grid grid-cols-3 justify-start gap-5'>
+                  <span>Language: ${Object.values(country.languages).map(
+                    (e) => " " + e
+                  )}</span>
+                  <span>Population: ${country.population}</span>
+                  <span>FIFA: ${country.fifa}</span>
+                  </div>
+                  <div class='grid grid-cols-3 justify-start gap-5'>
+                  <span>Region: ${country.region}</span>
+                  <span>Sub Region: ${country.subregion}</span>
+                  <span>Continent: ${country.continents?.map((e) => e)}</span>
+                  </div>
+                  <div class='grid grid-cols-3 justify-start gap-5'>
+                  <span>Area: ${country.area} km</span>
+                  <span>Starting Day: ${country.startOfWeek}</span>
+                  <span>Time Zone: ${country.timezones[0]}</span>
+                  </div>
+                </label>
+              </label>
             </td>
     `;
   tbody.append(tr);
