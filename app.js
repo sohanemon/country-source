@@ -2,10 +2,20 @@ const tbody = document.getElementById("tbody");
 const currentPageUpdate = document.getElementById("current-page");
 const warning = document.getElementById("warning");
 let currentPage = 1;
-function paginate(pageNo) {
+function paginate(pageNo, url = "all") {
   tbody.innerHTML = "";
+  let len;
   warning.style.display = "block";
-  currentPageUpdate.innerHTML = `
+  fetch(`https://restcountries.com/v3.1/${url}`)
+    .then((res) => res.json())
+    .then((data) => {
+      len = data?.length;
+      data?.slice(10 * (pageNo - 1), 10 * pageNo).map((e) => setCountry(e));
+
+      console.log(len);
+    })
+    .then(() => {
+      currentPageUpdate.innerHTML = `
     Showing
         <span class="font-semibold text-gray-900 dark:text-white">${
           10 * (pageNo - 1) + 1
@@ -13,14 +23,10 @@ function paginate(pageNo) {
         <span class="font-semibold text-gray-900 dark:text-white">${
           10 * pageNo
         }</span> of
-        <span class="font-semibold text-gray-900 dark:text-white">250</span>
+        <span class="font-semibold text-gray-900 dark:text-white">${len}</span>
         Entries
   `;
-  fetch("https://restcountries.com/v3.1/all")
-    .then((res) => res.json())
-    .then((data) =>
-      data.slice(10 * (pageNo - 1), 10 * pageNo).map((e) => setCountry(e))
-    );
+    });
 }
 paginate(currentPage);
 
