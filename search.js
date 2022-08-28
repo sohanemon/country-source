@@ -1,10 +1,12 @@
 const search = document.getElementById("search");
+search.addEventListener("change", (e) => {
+  e.preventDefault();
+  tbody.innerHTML = "";
+  paginate(1, `name/${search.value}`);
+});
 search.addEventListener("input", (e) => {
   e.preventDefault();
-  if (!search.value) {
-    tbody.innerHTML = "";
+  if (search.value === "") {
     paginate(1);
-    return;
   }
-  paginate(1, `name/${search.value}`);
 });

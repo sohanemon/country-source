@@ -5,11 +5,15 @@ let currentPage = 1;
 function paginate(pageNo, url = "all") {
   tbody.innerHTML = "";
   let len;
+  warning.innerHTML = "⏱️<br />Wait Data is coming Bro<br />👦";
   warning.style.display = "block";
   fetch(`https://restcountries.com/v3.1/${url}`)
     .then((res) => res.json())
     .then((data) => {
       len = data?.length;
+      if (!len) {
+        warning.innerHTML = "✒️<br>Banan Thik kore lekh<br>💯";
+      }
       data?.slice(10 * (pageNo - 1), 10 * pageNo).map((e) => setCountry(e));
 
       console.log(len);
