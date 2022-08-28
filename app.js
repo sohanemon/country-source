@@ -92,7 +92,7 @@ const setCountry = (country) => {
                   <span>Continent: ${country.continents?.map((e) => e)}</span>
                   </div>
                   <div class='grid grid-cols-3 justify-start gap-5'>
-                  <span>Area: ${country.area} km</span>
+                  <span>Area: ${country.area} sq. km</span>
                   <span>Starting Day: ${country.startOfWeek}</span>
                   <span>Time Zone: ${country.timezones[0]}</span>
                   </div>
