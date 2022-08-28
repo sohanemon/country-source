@@ -66,11 +66,19 @@ const nextPage = document
   .getElementById("next-page")
   .addEventListener("click", (e) => {
     e.preventDefault();
+    if (currentPage === 25) {
+      alert("Tor ki mathai shomossa?");
+      return;
+    }
     paginate(++currentPage); // note: if we use currentPage++ then it may pass currentPage to the function and then it may increase it's value
   });
 const prevPage = document
   .getElementById("prev-page")
   .addEventListener("click", (e) => {
     e.preventDefault();
-    paginate(++currentPage);
+    if (currentPage === 1) {
+      alert("Paglami koros kn?");
+      return;
+    }
+    paginate(--currentPage);
   });
